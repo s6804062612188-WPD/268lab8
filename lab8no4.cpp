@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void sort(int thing[][2]) {
-	for (int i=0; i<4; i=i+1) {
+	for (int i=0; i<3; i=i+1) {
 		for (int j=0; j<3-i; j=j+1) {
 			if ( thing[j][0] < thing[j+1][0] ) {
 				int temp0=thing[j][0];
