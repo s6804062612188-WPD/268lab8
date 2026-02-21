@@ -3,7 +3,7 @@ int checkscore(char std[]);
 void printScores(char *ans);
 int hardestQ(int qIndex[]);
 
-int charkeys[10] = {'D','B','D','C','C','D','A','A','A','D'};
+int charkeys[10] = {'D','B','D','C','C','D','A','E','A','D'};
 int qCorrect[10] = {0,0,0,0,0,0,0,0,0,0};
 int main() {
     char ans[8][10] = {
