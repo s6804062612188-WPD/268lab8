@@ -1,6 +1,7 @@
 #include <stdio.h>
 int checkscore(char std[]);
 void printScores(char *ans);
+int hardestQ(int qIndex[]);
 
 int charkeys[10] = {'D','B','D','C','C','D','A','A','A','D'};
 int qCorrect[10] = {0,0,0,0,0,0,0,0,0,0};
@@ -18,6 +19,15 @@ int main() {
 	printf("the first question was answered correctly %d time", qCorrect[0]);
 	(qCorrect[0]!=1)? printf("s"):0;
 	printf("\n");
+	
+	int hardest[10];
+	int hA = hardestQ(hardest);
+	printf("hardest (%d) ", hA); (hA==1)? printf("question was"):printf("questions were"); printf(" number:\t");
+	for (int i=0; i<hA; i=i+1) {
+		printf("%d", hardest[i]+1);
+		(i==hA-1)? printf("\n"):printf(",");
+	}
+	printf("with the score of:\t%d", qCorrect[hardest[0]]);
 }
 
 int checkscore(char std[]) {
@@ -35,4 +45,21 @@ void printScores(char *ans) {
 	for (int i=0;i<8;i=i+1) {
 		printf("std %d => %d\n", (i+1), checkscore(ans+i*10) );
 	}
+}
+
+int hardestQ(int qIndex[]) {
+	int amount=1;
+	int lowest=qCorrect[0];
+	qIndex[amount-1]=0;
+	for (int i=1; i<10;i=i+1) {
+		if (qCorrect[i] < lowest) {
+			amount=1;
+			lowest = qCorrect[i];
+			qIndex[amount-1]=i;
+		} else if (qCorrect[i] == lowest) {
+			amount+=1;
+			qIndex[amount-1]=i;
+		}
+	}
+	return amount;
 }
